@@ -1,21 +1,8 @@
 import './CountriesList.css'
 import { Link } from "react-router-dom"
-import { useEffect, useState } from 'react'
-import axios from 'axios'
 
-const countriesAPI = 'https://ih-countries-api.herokuapp.com/countries'
-const CountriesList = () => {
-
-    const [countryJSON, setCountryJSON] = useState([])
-    
-    useEffect(()=>{
-        axios
-        .get(countriesAPI)
-        .then((response)=>{
-            setCountryJSON(response.data)
-        })
-
-    },[])
+const CountriesList = (props) => {
+const {countryJSON} = props
 
 
     return(
@@ -27,7 +14,10 @@ const CountriesList = () => {
                         // </ul>
                         <div className="col-5 countries" key={country._id}>
                             <div className="list-group">
-                                <Link to={`/${country.alpha3Code}`} className="list-group-item list-group-item-action" key={country._id}>{country.name.common}</Link>
+                                <Link to={`/${country.alpha3Code}`} className="list-group-item list-group-item-action" key={country._id}>
+                                    <img src={`https://flagpedia.net/data/flags/icon/72x54/${country.alpha2Code.toLowerCase()}.png`} alt={country.name.common} /> <br />
+                                    {country.name.common}
+                                    </Link>
                             </div>
                         </div>
 

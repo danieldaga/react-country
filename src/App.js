@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <CountriesList />
+      <CountriesList countryJSON={countryJSON}/>
       <CountryDetails />
     </div>
   );
