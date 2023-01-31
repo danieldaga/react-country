@@ -4,6 +4,7 @@ import CountryDetails from './components/countryDetails/CountryDetails';
 import Navbar from './components/navbar/Navbar';
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Route, Routes } from 'react-router-dom';
 
 const countriesAPI = 'https://ih-countries-api.herokuapp.com/countries'
 function App() {
@@ -23,15 +24,22 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <div className="container">
-        <div className="">
-          <CountriesList countryJSON={countryJSON}/>
-          {/* React-Router Route rendering the CountryDetails should go here */}
-        </div>
-      </div>
-      {/* <CountryDetails /> */}
+      <Routes>
+        <Route path="/"
+        element={ <CountriesList countryJSON={countryJSON}/>}/>
+        <Route path="/:countryId"
+        element={ <CountryDetails countryJSON={countryJSON}/>}/>
+      </Routes>
     </div>
   );
 }
 
 export default App;
+
+
+// <div className="container">
+//         <div className="">
+//           <CountriesList countryJSON={countryJSON}/>
+//           {/* React-Router Route rendering the CountryDetails should go here */}
+//         </div>
+//       </div>

@@ -1,39 +1,56 @@
+import { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
 import './CountryDetails.css'
 
-const CountryDetails = (props) => {
-    const {countryJSON} = props
-    
+const CountryDetails = (props) => { 
+    const {countryJSON} = props   
+    const [foundCountry, setFoundCountry] = useState(null);
 
+    const { countryId } = useParams();
+
+    useEffect(() => {
+        const country = countryJSON.find((oneCountry) => {
+        
+            return oneCountry.alpha3Code === countryId;
+        })
+    if (country) {
+        setFoundCountry(country);
+    }
+    
+    }, [countryId, countryJSON]);
 
     return(
-        <div className="col-7">
-            <h1>{countryJSON.name.common}</h1>
+        <div>
+            {foundCountry && (<div className="col-7">
+            <h1>{foundCountry.name.common}</h1>
             <table className="table">
                 <thead></thead>
                 <tbody>
                 <tr>
                     <td className='td-boot'>Capital</td>
-                    <td>{countryJSON.capital}</td>
+                    <td>{foundCountry.capital}</td>
                 </tr>
                 <tr>
                     <td>Area</td>
                     <td>
-                    {countryJSON.area} km
+                    {foundCountry.area} km
                     <sup>2</sup>
                     </td>
                 </tr>
                 <tr>
                     <td>Borders</td>
                     <td>
-                    <ul>
-                        <li><a href="/AND">Andorra</a></li>
-                        
-                    </ul>
+                    {foundCountry.borders.map((borderCountry)=>{
+                        return (
+                            <Link to={`/${borderCountry}`}><div>{borderCountry}</div></Link>
+                        )
+                    })}
                     </td>
                 </tr>
                 </tbody>
             </table>
-            </div>
+            </div>)}
+        </div>
     )
 }
 
