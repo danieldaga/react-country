@@ -6,8 +6,12 @@ const {countryJSON} = props
 
 
     return(
-        
-                countryJSON && countryJSON.map((country)=>{
+            countryJSON === null 
+            ? <div>
+                <img src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" alt="loading" />
+                <h1>Loading...</h1>
+            </div>
+            :    countryJSON && countryJSON.map((country)=>{
                     return(
                         <div className="col-5 countries" key={country.alpha3Code}>
                             <div className="list-group">

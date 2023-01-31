@@ -21,7 +21,9 @@ const CountryDetails = (props) => {
 
     return(
         <div>
-            {foundCountry && (<div className="col-7">
+            {foundCountry === null
+            ? "loading...."
+            : foundCountry && (<div className="col-7">
             <h1>{foundCountry.name.common}</h1>
             <table className="table">
                 <thead></thead>

@@ -9,7 +9,7 @@ import { Route, Routes } from 'react-router-dom';
 const countriesAPI = 'https://ih-countries-api.herokuapp.com/countries'
 function App() {
 
-  const [countryJSON, setCountryJSON] = useState([])
+  const [countryJSON, setCountryJSON] = useState(null)
     
     useEffect(()=>{
         axios
@@ -22,6 +22,7 @@ function App() {
 
 
   return (
+    
     <div className="App">
       <Navbar />
       <Routes>
@@ -35,11 +36,3 @@ function App() {
 }
 
 export default App;
-
-
-// <div className="container">
-//         <div className="">
-//           <CountriesList countryJSON={countryJSON}/>
-//           {/* React-Router Route rendering the CountryDetails should go here */}
-//         </div>
-//       </div>
