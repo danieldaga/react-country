@@ -8,16 +8,13 @@ const {countryJSON} = props
     return(
         
                 countryJSON && countryJSON.map((country)=>{
-                    return( 
-                        // <ul>
-                        //     <Link to={`/${country.alpha3Code}`} key={country._id}>{country.name.common}</Link>
-                        // </ul>
+                    return(
                         <div className="col-5 countries" key={country._id}>
                             <div className="list-group">
                                 <Link to={`/${country.alpha3Code}`} className="list-group-item list-group-item-action" key={country._id}>
                                     <img src={`https://flagpedia.net/data/flags/icon/72x54/${country.alpha2Code.toLowerCase()}.png`} alt={country.name.common} /> <br />
                                     {country.name.common}
-                                    </Link>
+                                </Link>
                             </div>
                         </div>
 

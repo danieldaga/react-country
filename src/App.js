@@ -23,8 +23,13 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <CountriesList countryJSON={countryJSON}/>
-      <CountryDetails />
+      <div className="container">
+        <div className="">
+          <CountriesList countryJSON={countryJSON}/>
+          {/* React-Router Route rendering the CountryDetails should go here */}
+        </div>
+      </div>
+      {/* <CountryDetails /> */}
     </div>
   );
 }
