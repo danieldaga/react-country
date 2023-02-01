@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import './CountryDetails.css'
 
 const CountryDetails = (props) => { 
-    const {countryJSON} = props   
+    const {countryJSON, isTrue} = props   
     const [foundCountry, setFoundCountry] = useState(null);
 
     const { countryId } = useParams();
@@ -21,6 +21,7 @@ const CountryDetails = (props) => {
 
     return(
         <div>
+            
             {foundCountry === null
             ? "loading...."
             : foundCountry && (<div className="col-7">

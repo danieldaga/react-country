@@ -32,7 +32,7 @@ function App() {
         element={ <CountryDetails countryJSON={countryJSON}/>}/>
       </Routes>
     </div>
-  );
+  ); 
 }
 
 export default App;

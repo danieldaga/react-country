@@ -2,7 +2,7 @@ import './CountriesList.css'
 import { Link } from "react-router-dom"
 
 const CountriesList = (props) => {
-const {countryJSON} = props
+const {countryJSON, countryR, isTrue} = props
 
 
     return(
@@ -11,7 +11,8 @@ const {countryJSON} = props
                 <img src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" alt="loading" />
                 <h1>Loading...</h1>
             </div>
-            :    countryJSON && countryJSON.map((country)=>{
+            : 
+            countryJSON && countryJSON.map((country)=>{
                     return(
                         <div className="col-5 countries" key={country.alpha3Code}>
                             <div className="list-group">
